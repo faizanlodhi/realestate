@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    template-->
+    <template id="books_details">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>
+                            <span t-field="doc.name"/>
+                        </h2>
+                        <div>
+                            <strong>Student Name:</strong>
+                            <span t-field="doc.student_id"/>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Author</th>
+                                    <th>Pages</th>
+                                    <th>Release Date</th>
+                                    <th>State</th>
+                                    <th>Price</th>
+                                </tr>
+                                <td>
+                                    <span t-field="doc.name"/>
+                                </td>
+                                <td>
+                                    <span t-field="doc.author_ids"/>
+                                </td>
+                                <td>
+                                    <span t-field="doc.pages"/>
+                                </td>
+                                <td>
+                                    <span t-field="doc.date_release"/>
+                                </td>
+                                <td>
+                                    <span t-field="doc.state"/>
+                                </td>
+                                <td>
+                                    <span t-field="doc.retail_price"/>
+                                </td>
+
+                            </thead>
+                            <!--                            <tbody>-->
+                            <!--                                <t t-set="offers" t-value="property.mapped('offer_ids')"/>-->
+                            <!--                                <tr t-foreach="offers" t-as="offer">-->
+                            <!--                                    <td>-->
+                            <!--                                        <span t-field="offer.price"/>-->
+                            <!--                                    </td>-->
+                            <!--                                </tr>-->
+                            <!--                            </tbody>-->
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+
+    </template>
+    <record id="report_library_book_wizard" model="ir.actions.report">
+        <field name="name">Print Book</field>
+        <field name="model">print.books.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">library.books_details</field>
+        <field name="report_file">library.books_details</field>
+        <field name="print_report_name">'Finished Products - %s' % object.name</field>
+        <field name="binding_model_id" ref="library.model_print_books_wizard"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
+</odoo>

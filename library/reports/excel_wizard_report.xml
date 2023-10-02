@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="excel_wizard_report" model="ir.actions.report">
+        <field name="name">Excel Report</field>
+        <field name="model">print.books.wizard</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">library.excel_wizard_report</field>
+        <field name="report_file">library.excel_wizard_report</field>
+<!--        <field name="print_report_name">'Finished Products - %s' % object.name</field>-->
+        <field name="binding_model_id" ref="library.model_print_books_wizard"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

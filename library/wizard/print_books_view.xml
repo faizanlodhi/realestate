@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_print_books_form" model="ir.ui.view">
+        <field name="name">print.books.wizard.form</field>
+        <field name="model">print.books.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Print All Books">
+                <group class="oe_title">
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                </group>
+                <footer>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    <button name="print_report" string="Print PDF" type="object" class="btn-primary"/>
+                    <button name="print_xls_report" string="Print Excel" type="object" class="btn-primary"/>
+                </footer>
+            </form>
+        </field>
+
+
+    </record>
+
+    <record id="action_print_books" model="ir.actions.act_window">
+        <field name="name">Print Books</field>
+        <field name="res_model">print.books.wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_print_books_form"/>
+        <field name="target">new</field>
+    </record>
+
+
+
+
+</odoo>
